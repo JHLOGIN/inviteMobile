@@ -1,3 +1,6 @@
+
+
+
 var app = {  // 定义目录
     srcPath:'src/',
     buildPath:'build/',
@@ -107,24 +110,38 @@ gulp.task('server',gulp.series('build',function (done) {
         gulp.src('lib/**/*.js')
         .pipe(gulp.dest(app.buildPath+'lib'))
         .pipe(gulp.dest(app.distPath+'lib'))
+        .pipe(connect.reload())
    });
     gulp.watch(app.srcPath+'**/*.html',async()=>{
         gulp.src(app.srcPath+'**/*.html')  /*src下所有目录下的所有.html文件*/
         .pipe(gulp.dest(app.buildPath)) //gulp.dest 要把文件放到指定的目标位置
         .pipe(gulp.dest(app.distPath))
+        .pipe(connect.reload())
     });
     gulp.watch(app.srcPath+'js/**/*.js',async()=>{
         gulp.src(app.srcPath+'js/**/*.js')
-        .pipe(concat('index.js'))
         .pipe(gulp.dest(app.buildPath+'js/'))
-        .pipe(uglify())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(uglify({
+            mangle:true,
+            compress: true
+        }
+        ))
+        .on('error', function (err) {
+            gutil.log(gutil.colors.red('[Error]'), err.toString());
+        })
+        .pipe(sourcemaps.write('../maps'))
         .pipe(gulp.dest(app.distPath+'js'))
+        .pipe(connect.reload())
     });
     gulp.watch(app.srcPath+'img/**/*',async()=>{
         gulp.src(app.srcPath+'img/**/*')
         .pipe(gulp.dest(app.buildPath+'img'))
         .pipe(imagemin())
         .pipe(gulp.dest(app.distPath+'img'))
+        .pipe(connect.reload())
     });
     gulp.watch(app.srcPath+'scss/**/*.less',async()=>{
         gulp.src(app.srcPath+'scss/*.less')
@@ -133,6 +150,7 @@ gulp.task('server',gulp.series('build',function (done) {
         /*经过压缩，放到dist目录当中*/
         .pipe(cssmin())
         .pipe(gulp.dest(app.distPath+'css/'))
+        .pipe(connect.reload())
     });
 
     //通过浏览器把指定的地址 （http://localhost:9999）打开。
