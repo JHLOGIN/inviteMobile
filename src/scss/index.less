@@ -1,0 +1,99 @@
+html {font-size: 62.5%;/*10 ÷ 16 × 100% = 62.5%*/}
+.background{
+    background:url("../img/o_1dfcjhirl8ju1q9h15hkdlfm1r9.gif") no-repeat;
+   width:100%;
+   height: 100%;
+   background-size: 100% 100%;
+}
+.left-img{
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  right: 50%;
+  top: 20%;
+  background:url("../img/shanxing.gif") no-repeat;
+}
+.top-img{
+    position: absolute;
+    width: 130%;
+    bottom: 70%;
+    right:-15%;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+    -webkit-animation: rotate 10s linear infinite;
+    -moz-animation: rotate 10s linear infinite;
+    -o-animation: rotate 10s linear infinite;
+    animation: rotate 10s linear infinite;
+}
+   @-webkit-keyframes rotate{from{-webkit-transform: rotate(0deg)}
+       to{-webkit-transform: rotate(360deg)}
+   }
+   @-moz-keyframes rotate{from{-moz-transform: rotate(0deg)}
+       to{-moz-transform: rotate(359deg)}
+   }
+   @-o-keyframes rotate{from{-o-transform: rotate(0deg)}
+       to{-o-transform: rotate(359deg)}
+   }
+   @keyframes rotate{from{transform: rotate(0deg)}
+       to{transform: rotate(359deg)}
+   }
+
+   .bottom-img{
+    position: absolute;
+    bottom: -25%;
+}
+.page-body{
+  text-align: center;
+  position: relative;
+}
+.font{
+    color: white;
+    font-size: 1.5rem;
+}
+.seat{
+    top: 2rem;
+}
+.page-1 { 
+    .invite-img{
+        margin: 1rem 0;
+        margin-top: 4rem;
+        position: relative;
+        .han{
+            position: absolute;
+            top: 12.5rem;
+            left: 52%;
+          }
+    }
+    .title{
+        display: block;
+        padding: 1rem 0;
+    }
+}
+.page-2{
+    .page-body{
+        width: 100%;
+        height: 100%;
+    }
+    .title{
+        display: block;
+        padding: 1rem 0;
+    }
+    .context-img{
+        background: url("../img/context.png") no-repeat;
+        height: 75%;
+        width: 90%;
+        margin: 1rem auto;
+        opacity: 0.5;
+    }
+    .context{
+        height: 75%;
+        width: 90%;
+        margin: 1rem auto;
+        position: absolute;
+        top: 6rem;
+        left: 1.2rem;
+        font-size: 1.4rem;
+    }
+} 
