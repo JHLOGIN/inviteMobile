@@ -15,6 +15,7 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var connect = require('gulp-connect');
 var imagemin = require('gulp-imagemin');
+var clean=require("gulp-clean");
 var open = require('open');
 var babel=require('gulp-babel');
 var sourcemaps=require('gulp-sourcemaps');
@@ -28,7 +29,10 @@ gulp.task('lib',function (done) {
         done();
 });
 
-
+gulp.task('clean',function(){
+return gulp.src(app.buildPath)
+    .pipe(clean());
+})
 
 /*2.定义任务 把所有html文件移动另一个位置*/
 gulp.task('html',function (done) {
@@ -90,7 +94,7 @@ gulp.task('image',function (done) {
 /*同时执行多个任务 [其它任务的名称]
  * 当前bulid时，会自动把数组当中的所有任务给执行了。
  * */
-gulp.task('build',gulp.series('less','html','js','image','lib',function(done){
+gulp.task('build',gulp.series('clean',gulp.parallel('less','html','js','image','lib'),function(done){
     done();
 }));
 
