@@ -3,10 +3,12 @@ $(function () {
     var userAgentInfo = navigator.userAgent;
     var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone");
     var flag = false;
+    var handler=null;
     var v = 0
     for (v = 0; v < Agents.length; v++) {
         if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = true; break; }
     }
+
     if (!flag) {
         var mouse=new mouseEvent(dom);
           $(".upbtn").click(function(){
@@ -17,7 +19,7 @@ $(function () {
           })
           
     }else{
-       var handler = new handle(dom); 
+        handler = new handle(dom); 
     }
 
     function up(){
@@ -95,6 +97,7 @@ function handle(dom) {
     dom.addEventListener("touchstart", function (e) {
         _this.y = e.changedTouches[0].clientY;
         nowpage = $(".z-current");
+       
 
     })
     //监听手势移动事件
@@ -102,6 +105,7 @@ function handle(dom) {
         _this.ymove = e.changedTouches[0].clientY - _this.y;
         _this.y = e.changedTouches[0].clientY;
         move(_this.ymove);
+        
     })
     //监听手势放开事件
     dom.addEventListener("touchend", function (e) {
@@ -117,6 +121,7 @@ function handle(dom) {
 
    //翻页
     function move(y) {
+        
         if (!moveing&&isNoModity) {
             _this.nowY = y > 0 ? _this.screenH * -1 : _this.screenH;
             moveing = true;
@@ -128,6 +133,7 @@ function handle(dom) {
             }
 
         } else {
+           
             if (downOrup) {
                 movedown(y);
             } else {
@@ -139,6 +145,7 @@ function handle(dom) {
     }
     //上翻
     function moveUp(y) {
+        
         if (_this.nowY > 0) {
             _this.nowY += 5 * (y > 0 ? 1 : -1);
             newpage.addClass("z-active");
@@ -148,12 +155,13 @@ function handle(dom) {
             dompage.style.transform = `translateY(${_this.nowY + "px"})`;
         } else {
             isNoModity=true;
+            moveing=false;
             newpage.get(0).style.transform = `translateY("0px"})`;
             nowpage.removeClass("z-current");
             newpage.addClass("z-current");
             newpage.removeClass("z-active");
             delete newpage.get(0).style.transform;
-       
+            
             if (timeout != null) {
                 clearTimeout(timeout);
             }
@@ -163,7 +171,7 @@ function handle(dom) {
     function movedown(y) {
         if (_this.nowY < 0) {
             _this.nowY += 5 * (y > 0 ? 1 : -1);
-            console.log(_this.nowY);
+            
             newpage.addClass("z-active");
             //  nextpage.css("z-index",2);
             //  nextpage.css("display","-webkit-box;")
