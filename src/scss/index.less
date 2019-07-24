@@ -59,6 +59,25 @@ div{
 .page-body{
   text-align: center;
   position: relative;
+  height: 100%;
+  width: 100%;
+  .context{
+        height: 75%;
+        width: 90%;
+        margin: 1rem auto;
+        // position: absolute;
+        top: 6rem;
+        left: 1.2rem;
+        font-size: 1.4rem;
+        .people-model{
+           height: 50%;
+        }
+    
+  }
+  .title{
+    display: block;
+    padding: 1rem 0;
+}
 }
 .font{
     color: white;
@@ -109,3 +128,83 @@ div{
         font-size: 1.4rem;
     }
 } 
+.people-info{
+    .block{
+        width: 85px;
+        height: 85px;
+        border: 2px solid white;
+        opacity: 1;
+        left: 15%;
+        position: absolute;
+    }
+    .img-block{
+        top: 40px;
+        position: relative;
+    }
+    .line{
+        position: relative;
+        top: 40px;
+        .base-line{
+            display: inline-block;
+            height: 3px;
+            width: 25%;
+            background-color: white;
+        }
+        .base-block{
+            display: inline-block;
+            height: 3px;
+            width: 3px;
+            background-color: white; 
+            margin: 0 0.2rem;
+        }
+    }
+    .people-res{
+        display: block;
+        position: relative;
+        top: 45px
+    }
+
+}
+.page-4{
+    .people-model{
+        display: inline-block;
+        position: relative;
+        width: 30%;
+        height: auto;
+        .block{
+            width: 60px;
+            height: 40px;
+            border: 2px solid white;
+            opacity: 1;
+            top: 10px;
+            position: absolute;
+            animation-duration: 1s;
+            -webkit-animation-duration: 1s;
+            -moz-animation-duration: 1s;
+        }
+        .img-block{
+            top: 20px;
+            img{
+                width: 65px;
+                animation-duration: 1s;
+                -webkit-animation-duration: 1s;
+                -moz-animation-duration: 1s;
+            }
+            position: relative;
+        }
+        .people-base{
+         display: block;
+         position: relative;
+         top: 30px;
+         margin: 5px;
+         animation-timing-function: ease;
+         -webkit-animation-timing-function: ease;
+         -o-animation-timing-function: ease;
+         animation-duration: 1s;
+         -webkit-animation-duration: 1s;
+         -moz-animation-duration: 1s;
+        }
+    }
+}
+
+

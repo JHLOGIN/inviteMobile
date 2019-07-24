@@ -7,7 +7,7 @@ $(function () {
 function handle(dom) {
     this.x = 0;
     this.y = 0;
-    this.screenH = window.screen.availHeight;//获取屏幕的真是高度
+    this.screenH = document.body.clientHeight;//获取屏幕的真是高度
     this.ymove = 0;
     var _this = this;
     var nowpage = null; //现在显示的页面
@@ -15,6 +15,7 @@ function handle(dom) {
     var downOrup = true; //上翻|下翻
     var moveing = false; //移动中
     var timeout = null;  //延迟
+    var isNoModity=true;
     var mainPageList = $(".main-page");
     //监听手势按下事件
     dom.addEventListener("touchstart", function (e) {
@@ -30,17 +31,22 @@ function handle(dom) {
     })
     //监听手势放开事件
     dom.addEventListener("touchend", function (e) {
-        if (downOrup && _this.nowY < 0) {
+        if (downOrup && _this.nowY < 0&&isNoModity) {
+            isNoModity=false;
             timeout = setInterval(function () { move(1) }, 2);
 
-        } else if (!downOrup && _this.nowY > 0) {
-
+        } else if (!downOrup && _this.nowY > 0&&isNoModity) {
+            isNoModity=false;
             timeout = setInterval(function () { move(-1) }, 2);
         }
     })
+
    //翻页
     function move(y) {
-        if (!moveing) {
+        console.log(y);
+        console.log(moveing);
+        console.log(isNoModity);
+        if (!moveing&&isNoModity) {
             _this.nowY = y > 0 ? _this.screenH * -1 : _this.screenH;
             moveing = true;
             downOrup = y > 0 ? true : false;
@@ -54,7 +60,6 @@ function handle(dom) {
             if (downOrup) {
                 movedown(y);
             } else {
-                console.log("up");
                 moveUp(y);
             }
         }
@@ -63,7 +68,6 @@ function handle(dom) {
     }
     //上翻
     function moveUp(y) {
-        console.log(_this.nowY);
         if (_this.nowY > 0) {
             _this.nowY += 5 * (y > 0 ? 1 : -1);
             newpage.addClass("z-active");
@@ -72,13 +76,14 @@ function handle(dom) {
             var dompage = newpage.get(0);
             dompage.style.transform = `translateY(${_this.nowY + "px"})`;
         } else {
+            isNoModity=true;
             newpage.get(0).style.transform = `translateY("0px"})`;
             nowpage.removeClass("z-current");
             newpage.addClass("z-current");
             newpage.removeClass("z-active");
             delete newpage.get(0).style.transform;
             moveing = false;
-
+            console.log(timeout);
             if (timeout != null) {
                 clearTimeout(timeout);
             }
@@ -95,6 +100,7 @@ function handle(dom) {
             var dompage = newpage.get(0);
             dompage.style.transform = `translateY(${_this.nowY + "px"})`;
         } else {
+            isNoModity=true;
             moveing = false;
             newpage.get(0).style.transform = `translateY("0px"})`;
             nowpage.removeClass("z-current");
