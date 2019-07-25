@@ -6,7 +6,8 @@
   "scripts": {
     "test": "test",
     "build": "gulp build",
-    "dev": "gulp server"
+    "dev": "gulp server",
+    "init": "gulp init"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
-    "open": "^6.4.0"
+    "open": "^6.4.0",
+    "pump": "^3.0.0"
   }
 }

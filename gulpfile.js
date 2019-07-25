@@ -20,6 +20,7 @@ var open = require('open');
 var babel=require('gulp-babel');
 var sourcemaps=require('gulp-sourcemaps');
 var gutil=require("gulp-util");
+var pump = require('pump');
 /*把bower下载的前端框架放到我们项目当中*/
 gulp.task('lib',function (done) {
     gulp.src(app.srcPath+'lib/**')
@@ -29,9 +30,11 @@ gulp.task('lib',function (done) {
         done();
 });
 
-gulp.task('clean',function(){
-return gulp.src(app.buildPath)
-    .pipe(clean());
+gulp.task('clean',function(cb){
+    pump([
+        gulp.src(app.buildPath),
+        clean()
+        ], cb)
 })
 
 /*2.定义任务 把所有html文件移动另一个位置*/
@@ -63,10 +66,10 @@ gulp.task('js',function (done) {
     console.log("js -ug");
     gulp.src(app.srcPath+'js/**/*.js')
         .pipe(concat('index.js'))
-        .pipe(gulp.dest(app.buildPath+'js/'))
         .pipe(babel({
             presets: ['es2015']
         }))
+        .pipe(gulp.dest(app.buildPath+'js/'))
         .pipe(uglify({
             mangle:true,
             compress: true
@@ -97,7 +100,6 @@ gulp.task('image',function (done) {
 gulp.task('build',gulp.series('clean',gulp.parallel('less','html','js','image','lib'),function(done){
     done();
 }));
-
 
 /*定义server任务
  * 搭建一个服务器。设置运行的构建目录
@@ -168,6 +170,9 @@ gulp.task('server',gulp.series('build',function (done) {
 gulp.task('default',gulp.series('server',function(done){
     done();
 }));
+gulp.task('init',gulp.series('less','html','js','image','lib',function(done){
+  done();
+}))
 function done(){
     console.log("end");
 }
