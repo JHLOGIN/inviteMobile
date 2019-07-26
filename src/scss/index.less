@@ -34,6 +34,8 @@ div{
     -webkit-transition-duration: 1s;
     -moz-transition-property: -moz-transform;
     -moz-transition-duration: 1s;
+    transition-property: transform;
+    transition-duration: 1s;
     -webkit-animation: rotate 10s linear infinite;
     -moz-animation: rotate 10s linear infinite;
     -o-animation: rotate 10s linear infinite;
@@ -161,7 +163,7 @@ div{
     .people-res{
         display: block;
         position: relative;
-        top: 45px
+        top: 45px;
     }
 
 }
@@ -210,20 +212,31 @@ div{
 @media screen and (min-width: 500px){
     .page{
         position: relative;
-        height: 200px;
-        width: 32px;
+        height: 636px;
+        width: 54px;
+        top:-636px;
+        left: 202px;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
         margin: 0 auto;
-        bottom: 400px;
-        left: 185px;
-        .btn{
-         cursor: pointer;
-         text-align: center;
-         width: 24px;
-         font-size: 18px;
-         margin: 20px 0px;
-         padding: 10px 5px;
-         background: #08a1ef;
-     
+
+        .btn {
+            cursor: pointer;
+            text-align: center;
+            width: 32px;
+            font-size: 18px;
+            margin: 20px 0 20px 0;
+            padding: 18px 5px 18px 4px;
+            background: #f6f9fa;       
+            color: #3e4858;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        .btn:hover{
+            color: #f6f9fa;
+            background-color: #08a1ef;
         }
      
      }
@@ -231,14 +244,53 @@ div{
         background: url(../img/mobile.svg) no-repeat;
         height: 636px;
         width: 350px;
-        padding-left: 5px;
-        margin-top: 100px;
-        padding-right: 5px;
+        padding-left: 4.25px;
+        margin-top: 160px;
+        padding-right: 4.2px;
         padding-top: 88px;
-        padding-bottom: 50px;
+        padding-bottom: 30px;
         background-size: 100%;
     }
+    
+    .code {
+        position: relative;
+        margin-left: 36px;
+        width: 248px;
+        height: 636px;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        left: 400px;
+        top: -1272px;
+        margin: 0 auto;
+    
+        .code_panel {
+            padding: 19px;
+            width: 248px;
+            height: 280px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 2px 2px 20px rgba(0,0,0,.1);
+    
+            .code_panel_top {
+                font-size: 18px;
+                height: 20px;
+                color: #666;
+                line-height: 20px;
+            }
+    
+            .codeImg {
+                margin: 12px 0;
+                border: 1px solid #e6ebed;
+                padding: 15px;
+                height: 215px;
+                width: 210px;
+                
+                img {
+                    width: 176px;
+                    height: 176px;
+                }
+            }
+        }
+    }
 }
-
-
-
