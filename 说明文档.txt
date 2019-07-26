@@ -1,1 +1,10 @@
 https://x.eqxiu.com/s/iyCOYNfs  --模板链接
+
+项目拉下来以后：
+npm install 安装 开发依赖
+npm run init 初始化项目
+
+npm run build 构建项目打包
+
+npm run dev 启动项目
+
