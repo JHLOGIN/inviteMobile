@@ -595,18 +595,20 @@
                             <img src="./img/headline.png">
                         </div>
                         <div class="context">
-                          <div class="lay-input">
-                              <input placeholder="姓名">
-                          </div>
-                          <div class="lay-input">
-                            <input placeholder="邮箱">
-                        </div>
-                        <div class="lay-input">
-                            <input placeholder="电话">
-                        </div>
-                        <div class="lay-btn">
-                            <button type="submit">提交</button>
-                        </div>
+                          <form id="form_con" action="http://127.0.0.1:8080/savepeople" method="GET">
+                            <div class="lay-input">
+                                    <input name="user_name" placeholder="姓名">
+                                </div>
+                                <div class="lay-input">
+                                  <input name="user_email" placeholder="邮箱">
+                              </div>
+                              <div class="lay-input">
+                                  <input name="user_mobile" placeholder="电话">
+                              </div>
+                              <div class="lay-btn">
+                                  <button type="button" onclick="saveReport()">提交</button>
+                              </div>
+                          </form>
                         </div>
                         <li id="inside_8304488208" num="28" ctype="h" class="item item-comp"
                             style="position: absolute; z-index: 28; opacity: 1; width: 300px; height: 10px;left: 10px; transform: rotateZ(0deg); display: block;"
@@ -639,6 +641,7 @@
     <div id="content_load_check" class="content_load_check" style="display:none;width:0px;height:0px">
         <div></div>
     </div> 
+    <script src="./lib/jquery.form.min.js"></script>
     <script src="js/index.js"></script>
 </body>
 
