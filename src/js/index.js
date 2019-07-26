@@ -224,11 +224,10 @@ function mouseEvent(dom){
        
     })
     $(dom).find(pageselector).mousemove(function(e){
-        if(iscurstatues){
+        if(iscurstatues&&Math.abs(e.pageY-_this.y)>10){
             _this.ymove =e.pageY-_this.y;
             _this.y=e.pageY;
              _this.move(_this.ymove);
-           
         }
         e.stopPropagation();
     });
