@@ -101,6 +101,8 @@ function handle(dom) {
     //监听手势按下事件
     dom.addEventListener("touchstart", function(e) {
         _this.y = e.changedTouches[0].clientY;
+        isNoModity = true;
+        moveing = false;
         nowpage = $(".z-current");
     })
 
@@ -148,6 +150,7 @@ function handle(dom) {
     //上翻
     function moveUp(y) {
         if (_this.nowY > 0) {
+         
             _this.nowY += 5 * (y > 0 ? 1 : -1);
             newpage.addClass("z-active");
             //  nextpage.css("z-index",2);
@@ -155,14 +158,12 @@ function handle(dom) {
             var dompage = newpage.get(0);
             dompage.style.transform = `translateY(${_this.nowY + "px"})`;
         } else {
-            isNoModity = true;
-            moveing = false;
-            newpage.get(0).style.transform = `translateY("0px"})`;
+            newpage.get(0).style.transform = 'translateY(0px)';
             nowpage.removeClass("z-current");
             newpage.addClass("z-current");
             newpage.removeClass("z-active");
             delete newpage.get(0).style.transform;
-
+           
             if (timeout != null) {
                 clearTimeout(timeout);
             }
@@ -172,22 +173,23 @@ function handle(dom) {
     function movedown(y) {
         if (_this.nowY < 0) {
             _this.nowY += 5 * (y > 0 ? 1 : -1);
-
+           
             newpage.addClass("z-active");
             //  nextpage.css("z-index",2);
             //  nextpage.css("display","-webkit-box;")
             var dompage = newpage.get(0);
             dompage.style.transform = `translateY(${_this.nowY + "px"})`;
         } else {
-            isNoModity = true;
-            moveing = false;
-            newpage.get(0).style.transform = `translateY("0px"})`;
+            // console.log("翻页结束");
+            // isNoModity = true;
+            // moveing = false;
+            newpage.get(0).style.transform = 'translateY(0px)';
             nowpage.removeClass("z-current");
             newpage.addClass("z-current");
             newpage.removeClass("z-active");
-
             delete newpage.get(0).style.transform;
             //清除延迟
+       
             if (timeout != null) {
                 clearTimeout(timeout);
             }
@@ -291,7 +293,7 @@ function mouseEvent(dom) {
             dompage.style.transform = `translateY(${_this.nowY + "px"})`;
         } else {
             isNoModity = true;
-            newpage.get(0).style.transform = `translateY("0px"})`;
+            newpage.get(0).style.transform = 'translateY(0px)';
             nowpage.removeClass("z-current");
             newpage.addClass("z-current");
             newpage.removeClass("z-active");
@@ -315,7 +317,7 @@ function mouseEvent(dom) {
         } else {
             isNoModity = true;
             moveing = false;
-            newpage.get(0).style.transform = `translateY("0px"})`;
+            newpage.get(0).style.transform = 'translateY(0px)';
             nowpage.removeClass("z-current");
             newpage.addClass("z-current");
             newpage.removeClass("z-active");
