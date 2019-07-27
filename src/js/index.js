@@ -83,6 +83,13 @@ $(function() {
     }
 })
 
+// 导航栏：点击选项选中当前项，添加样式，表示当前选中项
+$(".navli li").click(function() {
+    var index = $(this).index();
+    $(this).addClass("active").siblings().removeClass("active");
+    $(".navli").eq(index).show().siblings(".navli").hide();
+});
+
 //定义手势翻页
 function handle(dom) {
     this.x = 0;
@@ -150,7 +157,7 @@ function handle(dom) {
     //上翻
     function moveUp(y) {
         if (_this.nowY > 0) {
-         
+
             _this.nowY += 5 * (y > 0 ? 1 : -1);
             newpage.addClass("z-active");
             //  nextpage.css("z-index",2);
@@ -163,7 +170,7 @@ function handle(dom) {
             newpage.addClass("z-current");
             newpage.removeClass("z-active");
             delete newpage.get(0).style.transform;
-           
+
             if (timeout != null) {
                 clearTimeout(timeout);
             }
@@ -173,7 +180,7 @@ function handle(dom) {
     function movedown(y) {
         if (_this.nowY < 0) {
             _this.nowY += 5 * (y > 0 ? 1 : -1);
-           
+
             newpage.addClass("z-active");
             //  nextpage.css("z-index",2);
             //  nextpage.css("display","-webkit-box;")
@@ -189,7 +196,7 @@ function handle(dom) {
             newpage.removeClass("z-active");
             delete newpage.get(0).style.transform;
             //清除延迟
-       
+
             if (timeout != null) {
                 clearTimeout(timeout);
             }
