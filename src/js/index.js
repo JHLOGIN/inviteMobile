@@ -1,6 +1,6 @@
 $(function() {
     var dom = document.querySelector(".main");
-    // var dom = document.querySelector("#con");
+    var nav = document.querySelector(".nav");
     var userAgentInfo = navigator.userAgent;
     var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
     var flag = false;
@@ -21,6 +21,7 @@ $(function() {
 
     } else {
         handler = new handle(dom);
+        nav.style.display = "none";
     }
 
     function up() {
