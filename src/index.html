@@ -48,7 +48,6 @@
             }
         }
     </style>
-
 </head>
 
 <body style="padding: 0px;background: url(./img/1.jpg) no-repeat;background-size:100% 100%;overflow:hidden;">
@@ -58,11 +57,30 @@
     <!-- 导航栏 -->
     <div class="nav">
         <div class="navli">
-            <li class="btn active"><a href="./index.html">首页</a></li>
-            <li class="btn"><a href="#">注册</a></li>
+            <li class="btn active"><a href="/">首页</a></li>
             <li class="btn"><a href="#">联系方式</a></li>
             <li class="btn">
                 <a target="_blank" href="https://apis.map.qq.com/uri/v1/routeplan?type=0&to=广西师范大学&tocoord=25.265700,110.326360&coord_type=1&policy=1&key=3TBBZ-6H633-LNK34-37OFD-2YUCT-L6FCW&referer=yingsidahui">地图导航</a>
+            </li>
+            <li class="btn" id="formregister">
+                <a href="javascript:void(0)" onclick="addregister()">注册</a>
+                <div id="register">
+                    <form id="navregister" action="http://39.108.219.59:8080/savepeople" method="GET">
+                        <!-- <form> -->
+                        <p>姓名:
+                            <input type="text" name="user_name" placeholder="请输入您的姓名" onblur="if(this.value!=''){return true} else{alert('姓名不能为空！'); return false;}" required>
+                        </p>
+                        <p>邮箱:
+                            <input type="email" id="eml" name="user_email" placeholder="请输入邮箱地址" onblur="isEmail(this.value)" required>
+                        </p>
+                        <p>电话:
+                            <input type="text" name="user_mobile" minlength="11" maxlength="11" onblur="this.value=this.value.replace(/[^\d]/g,''); if(this.value.length!=11) {alert('号码错误，请重新输入！'); return this.value='';} else {return true;}" placeholder="请输入手机号码" required>
+                        </p>
+                        <button class="submitregister" type="button" onclick="saveReport()">注册</button>
+                        <button id="closeregister">取消</button>
+                    </form>
+                </div>
+                <div id="registerbgc"></div>
             </li>
         </div>
     </div>
@@ -557,7 +575,7 @@
                             <img src="./img/headline.png">
                         </div>
                         <div class="context">
-                            <form id="form_con" action="http://127.0.0.1:8080/savepeople" method="GET">
+                            <form id="form_con" action="http://39.108.219.59:8080/savepeople" method="GET">
                                 <div class="lay-input">
                                     <input name="user_name" placeholder="姓名">
                                 </div>
@@ -568,7 +586,8 @@
                                     <input name="user_mobile" placeholder="电话">
                                 </div>
                                 <div class="lay-btn">
-                                    <button type="button" onclick="saveReport()">提交</button>
+                                    <button type="submit">提交</button>
+                                    <!-- <button type="button" onclick="saveReport()">提交</button> -->
                                 </div>
                             </form>
                         </div>
@@ -613,8 +632,9 @@
     <script src="js/index.js"></script>
 </body>
 
-</html>ript src="./lib/jquery.form.min.js"></script>
+</html>
+<!-- <script src="./lib/jquery.form.min.js"></script>
 <script src="js/index.js"></script>
 </body>
 
-</html>
+</html> -->

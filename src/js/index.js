@@ -19,9 +19,17 @@ $(function() {
             down();
         })
 
+        // window.location.reload();
+        // $(document).ready(function() {
+        //     if (location.href.indexOf("#") == -1) {
+        //         location.href = location.href + "#";
+        //         location.reload();
+        //     }
+        // })
     } else {
         handler = new handle(dom);
         nav.style.display = "none";
+        // window.location.reload();
     }
 
     function up() {
@@ -89,6 +97,32 @@ $(".navli li").click(function() {
     $(this).addClass("active").siblings().removeClass("active");
     $(".navli").eq(index).show().siblings(".navli").hide();
 });
+
+// 注册隐藏和显示
+// $("#addregister").click(function() {
+//     $("#formregister").show();
+// })
+// $("#closeregister").click(function() {
+//     $("#formregister").hide();
+// })
+
+// 把浏览器网页宽度赋给id为registerbgc的div
+// $(function() {
+//     var winWidth = document.body.clientWidth;
+// })
+// $("#registerbgc").css('width', 'winWidth')
+
+// 点击注册出现form表单
+function addregister() {
+    document.getElementById('registerbgc').style.display = 'block';
+    document.getElementById('register').style.display = 'block';
+}
+// 点击form表单中的取消按钮，form表单隐藏并重新刷新页面
+$("#closeregister").click(function() {
+    $("#register").hide();
+    $("#registerbgc").hide();
+    window.location.reload();
+})
 
 //定义手势翻页
 function handle(dom) {
@@ -339,12 +373,43 @@ function mouseEvent(dom) {
     }
 }
 
+//函数：验证邮箱格式
+function isEmail(strEmail) {
+    //定义正则表达式的变量:邮箱正则
+    var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    // console.log(strEmail);
+    //文本框不为空，并且验证邮箱正则成功，给出正确提示
+    if (strEmail != null && strEmail.search(reg) != -1) {
+        return true;
+    } else {
+        alert('请输入有效的邮箱地址！')
+        $('#eml').val('')
+    }
+}
 
 function saveReport() {
     // jquery 表单提交
-    $("#form_con").ajaxSubmit(function(message) {
+    // $("#form_con").ajaxSubmit(function(message) {
+    $("#navregister").ajaxSubmit(function(message) {
         // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容 
+        // required: true,
+        // email: true,
         console.log(message)
     });
     return false; //必须返回false，否则表单会自己再做一次提交操作，并且页面跳转 
 }
+
+// $("#navregister").bind("click", function() {
+//     $.ajax(function(msg) {
+//         console.log(msg)
+//     })
+// })
+
+// $(function() {
+//     /** 验证文件是否导入成功  */
+//     $("form").ajaxForm(function(data) {
+//         if (data == "1") {
+//             alert("提交成功！");
+//         }
+//     });
+// });
