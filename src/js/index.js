@@ -21,7 +21,7 @@ $(function() {
 
     } else {
         handler = new handle(dom);
-        nav.style.display = "none";
+        // nav.style.display = "none";
     }
 
     function up() {
