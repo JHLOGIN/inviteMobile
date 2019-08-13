@@ -1,0 +1,19 @@
+{
+  "name": "meetingnodeserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "meetingserver.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "forever": "^1.0.0"
+  },
+  "devDependencies": {
+    "mysql": "^2.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node meetingserver.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
