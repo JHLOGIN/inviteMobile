@@ -28,5 +28,14 @@
     "jquery-form": "^4.2.2",
     "open": "^6.4.0",
     "pump": "^3.0.0"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JHLOGIN/inviteMobile.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JHLOGIN/inviteMobile/issues"
+  },
+  "homepage": "https://github.com/JHLOGIN/inviteMobile#readme"
 }
