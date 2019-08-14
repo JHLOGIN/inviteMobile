@@ -27,9 +27,13 @@ $(function() {
         //     }
         // })
     } else {
-        handler = new handle(dom);
-        nav.style.display = "none";
+        // handler = new handle(dom);
+        // nav.style.display = "none";
         // window.location.reload();
+        var pageSlider=PageSlider.case({
+            startPage:1,
+            loop:true
+        })
     }
 
     function up() {
