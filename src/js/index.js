@@ -7,10 +7,7 @@ $(function() {
     var handler = null;
     var v = 0
     for (v = 0; v < Agents.length; v++) {
-        if (userAgentInfo.indexOf(Agents[v]) > 0) {
-            flag = true;
-            break;
-        }
+        if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = true; break; }
     }
 
     if (!flag) {
@@ -30,9 +27,13 @@ $(function() {
         //     }
         // })
     } else {
-        handler = new handle(dom);
-        nav.style.display = "none";
+        // handler = new handle(dom);
+        // nav.style.display = "none";
         // window.location.reload();
+        var pageSlider=PageSlider.case({
+            startPage:1,
+            loop:true
+        })
     }
 
     function up() {
@@ -162,15 +163,11 @@ function handle(dom) {
     dom.addEventListener("touchend", function(e) {
         if (downOrup && _this.nowY < 0 && isNoModity) {
             isNoModity = false;
-            timeout = setInterval(function() {
-                move(1)
-            }, 2);
+            timeout = setInterval(function() { move(1) }, 2);
 
         } else if (!downOrup && _this.nowY > 0 && isNoModity) {
             isNoModity = false;
-            timeout = setInterval(function() {
-                move(-1)
-            }, 2);
+            timeout = setInterval(function() { move(-1) }, 2);
         }
     })
 
@@ -264,12 +261,8 @@ function mouseEvent(dom) {
     var mainPageList = $(".main-page");
     var img = $("img");
     nowpage = $(".z-current");
-    img.on("contextmenu", function() {
-        return false;
-    });
-    img.on("dragstart", function() {
-        return false;
-    });
+    img.on("contextmenu", function() { return false; });
+    img.on("dragstart", function() { return false; });
     $(document).bind("contextmenu copy selectstart", function() {
         return false;
     });
@@ -291,15 +284,11 @@ function mouseEvent(dom) {
         iscurstatues = false;
         if (downOrup && _this.nowY < 0 && isNoModity) {
             isNoModity = false;
-            _this.timeout = setInterval(function() {
-                _this.move(1)
-            }, 2);
+            _this.timeout = setInterval(function() { _this.move(1) }, 2);
 
         } else if (!downOrup && _this.nowY > 0 && isNoModity) {
             isNoModity = false;
-            _this.timeout = setInterval(function() {
-                _this.move(-1)
-            }, 2);
+            _this.timeout = setInterval(function() { _this.move(-1) }, 2);
         }
         e.stopPropagation();
     })
@@ -308,15 +297,11 @@ function mouseEvent(dom) {
         iscurstatues = false;
         if (downOrup && _this.nowY < 0 && isNoModity) {
             isNoModity = false;
-            _this.timeout = setInterval(function() {
-                _this.move(1)
-            }, 2);
+            _this.timeout = setInterval(function() { _this.move(1) }, 2);
 
         } else if (!downOrup && _this.nowY > 0 && isNoModity) {
             isNoModity = false;
-            _this.timeout = setInterval(function() {
-                _this.move(-1)
-            }, 2);
+            _this.timeout = setInterval(function() { _this.move(-1) }, 2);
         }
         e.stopPropagation();
     })
@@ -414,12 +399,6 @@ function saveReport() {
         // required: true,
         // email: true,
         console.log(message)
-            // if (true) {
-            //     // 成功了：表单重置为空
-
-        // } else {
-        //     // 失败了
-        // }
     });
     return false; //必须返回false，否则表单会自己再做一次提交操作，并且页面跳转 
 }
