@@ -64,7 +64,7 @@ gulp.task('js', function(done) {
     gulp.src(app.srcPath + 'js/**/*.js')
         .pipe(concat('index.js'))
         .pipe(babel({
-            presets: ['es2015']
+            presets: ['es2015'],
         }))
         .pipe(gulp.dest(app.buildPath + 'js/'))
         .pipe(uglify({
@@ -122,10 +122,10 @@ gulp.task('server', gulp.series('build', function(done) {
     });
     gulp.watch(app.srcPath + 'js/**/*.js', async() => {
         gulp.src(app.srcPath + 'js/**/*.js')
-            .pipe(gulp.dest(app.buildPath + 'js/'))
             .pipe(babel({
                 presets: ['es2015']
             }))
+            .pipe(gulp.dest(app.buildPath + 'js/'))
             .pipe(uglify({
                 mangle: true,
                 compress: true
